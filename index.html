@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -6,9 +6,13 @@
   </head>
 
   <body>
+
     <div class="container-fluid">
       <div class="row">
+        <!-- resize to full screen -->
         <div class="col-md-8" id="affdex_elements" style="width:680px;height:480px;"></div>
+      </div>
+      <!--
         <div class="col-md-4">
           <div style="height:25em;">
             <strong>EMOTION TRACKING RESULTS</strong>
@@ -19,7 +23,6 @@
           </div>
           <div id="logs"></div>
         </div>
-      </div>
       <div>
         <button id="start">Start</button>
         <button id="stop" onclick="onStop()">Stop</button>
@@ -33,12 +36,18 @@
           <br/> Press the stop button to end the detector.
         </p>
       </div>
+    -->
     </div>
   </body>
 
-  <script src="https://download.affectiva.com/js/3.2/affdex.js"/>
-  <script src="./index.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="https://download.affectiva.com/js/3.2/affdex.js"></script> -->
+<script type="text/javascript" src="https://download.affectiva.com/js/3.2.1/affdex.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script> -->
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="p5.js"></script>
+
 
 
 </html>

@@ -7,6 +7,8 @@ var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
 //Construct a CameraDetector and specify the image width / height and face detector mode.
 var detector = new affdex.CameraDetector(divRoot, width, height, faceMode);
 
+var emo;
+
 //Enable detection of all Expressions, Emotions and Emojis classifiers.
 detector.detectAllEmotions();
 detector.detectAllExpressions();
@@ -29,6 +31,7 @@ function log(node_name, msg) {
 const startButton = document.getElementById("start")
 //function executes when Start button is pushed.
 function onStart() {
+  console.log("starting...");
   if (detector && !detector.isRunning) {
     $("#logs").html("");
     detector.start();
@@ -37,7 +40,7 @@ function onStart() {
 }
 
 // Attach onStart to startButton
-startButton.addEventListener('click', onStart)
+// startButton.addEventListener('click', onStart)
 
 //function executes when the Stop button is pushed.
 function onStop() {
@@ -80,17 +83,20 @@ detector.addEventListener("onStopSuccess", function() {
 //Faces object contains probabilities for all the different expressions, emotions and appearance metrics
 detector.addEventListener("onImageResultsSuccess", function(faces, image, timestamp) {
   $('#results').html("");
- /*  log('#results', "Timestamp: " + timestamp.toFixed(2));
-  log('#results', "Number of faces found: " + faces.length);
+  // log('#results', "Timestamp: " + timestamp.toFixed(2));
+  // log('#results', "Number of faces found: " + faces.length);
   if (faces.length > 0) {
-    log('#results', "Appearance: " + JSON.stringify(faces[0].appearance));
-    log('#results', "Emotions: " + JSON.stringify(faces[0].emotions, function(key, val) {
-      return val.toFixed ? Number(val.toFixed(0)) : val;
-    }));
-    log('#results', "Expressions: " + JSON.stringify(faces[0].expressions, function(key, val) {
-      return val.toFixed ? Number(val.toFixed(0)) : val;
-    })); */
+  //   log('#results', "Appearance: " + JSON.stringify(faces[0].appearance));
+  //   log('#results', "Emotions: " + JSON.stringify(faces[0].emotions, function(key, val) {
+  //     return val.toFixed ? Number(val.toFixed(0)) : val;
+  //   }));
+  //   log('#results', "Expressions: " + JSON.stringify(faces[0].expressions, function(key, val) {
+  //     return val.toFixed ? Number(val.toFixed(0)) : val;
+  //   }));
     log('#results', "Emoji: " +faces[0].emojis.dominantEmoji);
+    console.log(faces[0].emojis.dominantEmoji);
+    emo = faces[0].emojis.dominantEmoji;
+
     if($('#face_video_canvas')[0] != null)
       drawFeaturePoints(image, faces[0].featurePoints);
   }
